@@ -9,6 +9,11 @@
   @tailwind utilities;
 }
 
+@font-face {
+  font-family: 'Bukra';
+  src: url(/Fonts/29LTBukraRegular3.otf);
+}
+
 body {
   margin: 0;
 }
