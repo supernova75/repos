@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 const NavBar = ({ navbarOpen, setNavbarOpen }) => {
+  let navigate = useNavigate()
+
   return (
     <header className="w-full fixed sticky top-0 z-50 left-0 pt-2 pb-2 pr-10 pl-10 h-28 flex bg-primary-pantone5255c">
-      <div className="text-light-grey flex-grow z-50">
+      <div
+        className="text-light-grey flex-grow z-50"
+        onClick={() => navigate(`/`)}
+      >
         <img src="../Logos/Tamkeen_dual_rgb-02.svg" className=" h-full" />
       </div>
       <div className=" flex items-center justify-center z-50">

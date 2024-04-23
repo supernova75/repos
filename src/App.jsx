@@ -23,6 +23,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/instructions" element={<Instructions />} />
           <Route path="/about" element={<About />} />
+          <Route path="/" element={<About />} />
         </Routes>
       </main>
     </div>
