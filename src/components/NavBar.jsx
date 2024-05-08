@@ -3,7 +3,7 @@ const NavBar = ({ navbarOpen, setNavbarOpen }) => {
   let navigate = useNavigate()
 
   return (
-    <header className="w-full fixed sticky top-0 z-50 left-0 pt-2 pb-2 pr-10 pl-10 h-28 flex bg-primary-pantone5255c">
+    <header className="w-full fixed sticky top-0 z-50 left-0 pt-2 pb-2 pr-10 pl-10 h-20 flex bg-primary-pantone5255c">
       <div
         className="text-light-grey flex-grow z-50"
         onClick={() => navigate(`/`)}

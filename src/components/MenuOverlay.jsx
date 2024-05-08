@@ -6,11 +6,11 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
         navbarOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
       }`}
     >
-      <ul className="w-full flex flex-col items-start p-7">
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out">
+      <ul className="w-full px-64 flex flex-col items-start  p-7">
+        <li className="flex w-full leading-3 list-none focus:outline-none group tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out">
           <Link
             to="/chat"
-            className="h-full w-full py-2 text-lg text-light-grey text-xl text-center"
+            className="h-full w-full text-lg text-light-grey text-base text-center"
             onClick={() => {
               setNavbarOpen(false)
             }}
@@ -18,12 +18,12 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             Chat with Assistant
           </Link>
         </li>
-        <hr className="h-px my-8 h-full w-full  bg-light-grey border-0 dark:bg-light-grey  opacity-70 "></hr>
+        <hr className="h-px my-4 h-full w-full  bg-light-grey border-0 dark:bg-light-grey opacity-35 "></hr>
 
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out">
+        <li className="flex w-full leading-3 list-none focus:outline-none group tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out">
           <Link
             to="/about"
-            className="h-full w-full py-2 text-lg text-light-grey text-xl text-center"
+            className="h-full w-full  text-lg text-light-grey text-base text-center"
             onClick={() => {
               setNavbarOpen(false)
             }}
@@ -31,11 +31,11 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             About
           </Link>
         </li>
-        <hr className="h-px my-8 h-full w-full  bg-light-grey border-0 dark:bg-light-grey  opacity-70 "></hr>
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out ">
+        <hr className="h-px my-4 h-full w-full  bg-light-grey border-0 dark:bg-light-grey opacity-35 "></hr>
+        <li className="flex w-full leading-3 list-none focus:outline-none group tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out ">
           <Link
             to="/instructions"
-            className="h-full w-full py-2 text-lg text-light-grey text-xl text-center"
+            className="h-full w-full text-lg text-light-grey text-base text-center"
             onClick={() => {
               setNavbarOpen(false)
             }}
@@ -43,11 +43,11 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             instructions
           </Link>
         </li>
-        <hr className="h-px my-8 h-full w-full  bg-light-grey border-0 dark:bg-light-grey  opacity-70 "></hr>
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out ">
+        <hr className="h-px my-4 h-full w-full  bg-light-grey border-0 dark:bg-light-grey  opacity-35"></hr>
+        <li className="flex w-full leading-3 list-none focus:outline-none group tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out ">
           <Link
             to="/account"
-            className="h-full w-full py-2 text-lg text-light-grey text-xl text-center"
+            className="h-full w-full  text-lg text-light-grey text-base text-center"
             onClick={() => {
               setNavbarOpen(false)
             }}
@@ -55,11 +55,11 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
             Account
           </Link>
         </li>
-        <hr className="h-px my-8 h-full w-full  bg-light-grey border-0 dark:bg-light-grey  opacity-70 "></hr>
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out ">
+        <hr className="h-px my-4 h-full w-full  bg-light-grey border-0 dark:bg-light-grey opacity-35 "></hr>
+        <li className="flex w-full leading-3 list-none focus:outline-none group tracking-normal opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out">
           <Link
             to="/account"
-            className="h-full w-full py-2 text-lg text-primary-pantone-032c text-xl text-center"
+            className="h-full w-full text-base text-primary-pantone-032c text-xl text-center"
             onClick={() => {
               setNavbarOpen(false)
             }}

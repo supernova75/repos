@@ -18,11 +18,13 @@ export default {
       'seconday-7687c': '#154388',
       'seconday-1255c': '#FDC646',
       'seconday-284c': '#6AA9DD',
-      'light-grey': '#f8fafc'
+      'dark-blue': '#302D54',
+      'light-grey': '#f8fafc',
+      'medium-grey': '#EFEFEF'
     },
     fontFamily: {
       bukra: ['Bukra', 'sans-serif']
     }
   },
-  plugins: []
+  plugins: [require('tailwind-scrollbar')]
 }
