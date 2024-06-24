@@ -3,9 +3,13 @@ import ConversationHistorySidePanelChat from './ConversationHistorySidePanelChat
 const ConversationsHistorySidePanelMenuGroup = ({
   groupName,
   expandedGroup,
-  setExpandedGroup
+  setExpandedGroup,
+  allUserConversations,
+  setchatMessages,
+  setnewConversation
 }) => {
   const [toggleMenu, settoggleMenu] = useState(false)
+  const [aggregatedMenu, setaggregatedMenu] = useState([])
 
   const toggleConversations = () => {
     if (expandedGroup === groupName) {
@@ -14,46 +18,46 @@ const ConversationsHistorySidePanelMenuGroup = ({
       setExpandedGroup(groupName)
     }
   }
+  useEffect(() => {
+    setaggregatedMenu(allUserConversations)
+  }, [allUserConversations])
 
-  return (
-    <div className="w-full">
-      <button
-        className="flex flex-row justify-between items-center hover:bg-seconday-272c w-full p-3 "
-        onClick={toggleConversations}
-      >
-        <div className="text-sm font-semibold">{groupName}</div>
-        {expandedGroup === groupName ? (
-          <i className="pi pi-angle-up text-light-grey text-sm"></i>
-        ) : (
-          <i className="pi pi-angle-down text-light-grey text-sm"></i>
+  return aggregatedMenu ? (
+    aggregatedMenu.length > 0 && (
+      <div className="w-full">
+        <button
+          className="flex flex-row justify-between items-center hover:bg-seconday-272c w-full p-3 "
+          onClick={toggleConversations}
+        >
+          <div className="text-sm font-semibold past-conversations">
+            {groupName}
+          </div>
+          {expandedGroup === groupName ? (
+            <i className="pi pi-angle-up text-light-grey text-sm"></i>
+          ) : (
+            <i className="pi pi-angle-down text-light-grey text-sm"></i>
+          )}
+        </button>
+        {expandedGroup === groupName && (
+          <div>
+            <ul className=" bg-dark-blue max-h-72 overflow-y-auto scrollbar scrollbar-thin scrollbar-thumb-seconday-272c scrollbar-track-dark-blue scrollbar-thumb-rounded">
+              {aggregatedMenu.map((conversation) => (
+                <ConversationHistorySidePanelChat
+                  key={conversation['SessionId']}
+                  lastMessage={conversation['History'][0]['data']['content']}
+                  SessionId={conversation['SessionId']}
+                  setchatMessages={setchatMessages}
+                  conversation={conversation}
+                  setnewConversation={setnewConversation}
+                />
+              ))}
+            </ul>
+          </div>
         )}
-      </button>
-      {expandedGroup === groupName && (
-        <div>
-          <ul className=" bg-dark-blue max-h-72 overflow-y-auto scrollbar scrollbar-thin scrollbar-thumb-seconday-272c scrollbar-track-dark-blue scrollbar-thumb-rounded">
-            <ConversationHistorySidePanelChat
-              lastMessage={
-                'Can you help me with the basic understanding of XYZ'
-              }
-            />
-            <ConversationHistorySidePanelChat
-              lastMessage={'How do I fix the margin of the three lines'}
-            />
-            <ConversationHistorySidePanelChat
-              lastMessage={'I dont understand the difference'}
-            />
-            <ConversationHistorySidePanelChat
-              lastMessage={
-                'Can you help me with the basic understanding of XYZ'
-              }
-            />
-            <ConversationHistorySidePanelChat
-              lastMessage={'How do I fix the margin of the three lines'}
-            />
-          </ul>
-        </div>
-      )}
-    </div>
+      </div>
+    )
+  ) : (
+    <></>
   )
 }
 export default ConversationsHistorySidePanelMenuGroup

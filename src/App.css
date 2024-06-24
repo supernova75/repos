@@ -11,8 +11,117 @@
 
 @font-face {
   font-family: 'Bukra';
-  src: url(/Fonts/29LTBukraRegular3.otf);
+  src: url('/Fonts/29LTBukraRegular3.otf') format('opentype');
 }
+
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.p-dialog {
+  border-radius: 0.5rem;
+}
+.p-dialog-header {
+  background-color: #efefef;
+  color: #1d1b34;
+}
+.p-dialog-content {
+  color: #1d1b34;
+}
+
+.report-inaccuracies-modal > .p-dialog-header,
+.startNewConversationModal > .p-dialog-header {
+  background-color: #1d1b34;
+  color: #ffffff;
+  border: red;
+  font-size: 40px;
+  text-align: center;
+}
+
+.startNewConversationModal > .p-dialog-content {
+  background-color: #1d1b34;
+  border: red;
+  color: #ffffff;
+  text-align: center;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 3px;
+}
+.feedback-modal > .p-dialog-header,
+.report-inaccuracies-modal > .p-dialog-header {
+  background-color: #1d1b34;
+  color: #ffffff;
+  border: #1d1b34;
+}
+table,
+th,
+td {
+  border: 1px solid;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* li {
+  list-style: square;
+} */
+/* 
+.feedback-modal > .p-dialog-content,
+.report-inaccuracies-modal > .p-dialog-content {
+  background-color: #302d54;
+  color: #ffffff;
+} */
+
+.feedback-modal > .p-dialog,
+.report-inaccuracies-modal > .p-dialog {
+  border-radius: 0.5rem;
+}
+
+.chat-progress-bar > .p-progressbar-value,
+.chat-progress-bar > .p-progress-bar-value {
+  background-color: red;
+}
+
+.p-progressbar-value {
+  background-color: #e73743;
+}
+/* input,
+textarea,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Arial, Helvetica, sans-serif;
+} */
+.feedback-modal > .p-dialog,
+.report-inaccuracies-modal > .p-dialog,
+.startNewConversationModal,
+.report-inaccuracies-modal,
+.p-toast,
+.p-toast-container,
+.p-toast-item,
+.p-toast-image,
+.p-toast-message,
+.p-toast-title,
+.p-dialog-content,
+.p-dialog-header,
+.new-conversation-button,
+.past-conversations,
+.feedback-button {
+  font-family: 'Bukra';
+}
+code {
+  background-color: #efefef;
+}
+li {
+  list-style: decimal;
+}
+li > ul > li,
+li > ol > li {
+  list-style-type: disc;
+  margin-left: 10px;
 }

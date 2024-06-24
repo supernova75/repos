@@ -74,7 +74,6 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }) => {
           </Link>
         </li>
       </ul>
-      <button className="text-light-grey pb-10">اللغة العربية</button>
     </nav>
   )
 }
