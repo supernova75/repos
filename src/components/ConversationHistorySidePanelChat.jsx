@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
 import { Toast } from 'primereact/toast'
 import axios from 'axios'
@@ -8,14 +8,30 @@ const ConversationHistorySidePanelChat = ({
   SessionId,
   setchatMessages,
   conversation,
-  setnewConversation
+  setnewConversation,
+  chatMessages,
+  setallUserConversations,
+  lastMessageTimestamp
 }) => {
   const [displayDelete, setdisplayDelete] = useState(false)
   const [visible, setVisible] = useState(false)
+
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp * 1000)
+    return `${date.getDate().toString().padStart(2, '0')}/${(
+      date.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, '0')}/${date.getFullYear()}`
+  }
+  const formattedDate = formatTimestamp(lastMessageTimestamp)
+
   const changeChat = async () => {
     try {
       const baseUrl = import.meta.env.VITE_API_BASE_URL
-      let url = `${baseUrl}chatbot-conversation?UserId=1&SessionId=${SessionId}`
+      let url = `${baseUrl}chatbot-conversation?UserId=${localStorage.getItem(
+        'UserId'
+      )}&SessionId=${SessionId}`
 
       let response = await axios.get(url, {
         headers: {
@@ -35,11 +51,15 @@ const ConversationHistorySidePanelChat = ({
   const toast = useRef(null)
 
   const accept = () => {
-    toast.current.show({
-      severity: 'success',
-      summary: 'Conversation Deleted',
-      life: 3000
-    })
+    if (conversation['SessionId'] === chatMessages['SessionId']) {
+      setnewConversation(true)
+    }
+
+    setallUserConversations((previous) =>
+      previous.filter(
+        (convo) => convo['SessionId'] !== conversation['SessionId']
+      )
+    )
   }
 
   return (
@@ -56,7 +76,7 @@ const ConversationHistorySidePanelChat = ({
         defaultFocus="accept"
       />
       <li
-        className="relative border border-x-0  border-t-0 border-y-seconday-272c hover:bg-primary-pantone5255c hover:cursor-pointer"
+        className="relative border border-x-0 border-t-0 border-y-seconday-272c hover:bg-primary-pantone5255c hover:cursor-pointer"
         onMouseEnter={() => {
           setdisplayDelete(true)
         }}
@@ -64,7 +84,10 @@ const ConversationHistorySidePanelChat = ({
           setdisplayDelete(false)
         }}
       >
-        <p className="text-nowrap h-full px-3 py-3 text-ellipsis overflow-x-clip text-sm ml-2">
+        <p className="px-3 pt-1 w-full text-right text-sm text-medium-grey">
+          {formattedDate}
+        </p>
+        <p className="text-nowrap h-full px-3 py-3 text-light-grey text-ellipsis overflow-x-clip text-base ml-2">
           {lastMessage}
         </p>
         {displayDelete && (

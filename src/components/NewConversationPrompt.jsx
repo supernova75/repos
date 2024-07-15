@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-
+import UploadDocumentModal from './UploadDocumentModal'
 const NewConversationPrompt = ({ setMessage }) => {
   const suggestions = [
     {
@@ -30,17 +30,9 @@ const NewConversationPrompt = ({ setMessage }) => {
   const handleDivClick = (suggestion) => {
     setMessage(suggestion)
   }
-  const hiddenFileInput = useRef(null)
-  const handleFileInputClick = () => {
-    hiddenFileInput.current.click()
-  }
-  const handleChange = (event) => {
-    const fileUploaded = event.target.files[0]
 
-    // handleFile(fileUploaded);
-  }
   return (
-    <div className="flex flex-col justify-start align-middle items-center h-full text-primary-pantone5255c text-lg space-y-4 pt-4">
+    <div className="flex flex-col justify-start align-middle items-center h-full text-primary-pantone5255c text-lg space-y-3 pt-2">
       <p className=" text-primary-pantone5255c text-3xl">Welcome!</p>
       <p>Start chatting with your personal assistant!</p>
       <p>Here are some suggestions!</p>
@@ -55,29 +47,6 @@ const NewConversationPrompt = ({ setMessage }) => {
           </div>
         </div>
       ))}
-      <p>OR</p>
-      <div
-        className="flex justify-around px-10 py-3 rounded-lg border-2 border-primary-pantone-032c text-primary-pantone-032c hover:bg-primary-pantone-032c hover:text-light-grey hover:cursor-pointer"
-        onClick={() => {
-          handleDivClick('Hello! Please tell me about this document')
-          handleFileInputClick()
-        }}
-      >
-        <div>
-          <p className="w-full text-base flex">
-            <span className="ml-2 h-full flex justify-center items-center">
-              <i className="pi pi-paperclip text-lg mr-2 mt-1"></i>
-            </span>
-            Query Your Documents
-          </p>
-          <input
-            type="file"
-            onChange={handleChange}
-            ref={hiddenFileInput}
-            style={{ display: 'none' }} // Make the file input element invisible
-          />
-        </div>
-      </div>
     </div>
   )
 }

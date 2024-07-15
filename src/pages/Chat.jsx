@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 const Chat = ({ userId }) => {
   const [chatMessages, setchatMessages] = useState({ History: [] })
   const [allUserConversations, setallUserConversations] = useState([])
-  const [newConversation, setnewConversation] = useState(false)
+  const [newConversation, setnewConversation] = useState(true)
 
   useEffect(() => {
     const getChat = async () => {
@@ -14,13 +14,7 @@ const Chat = ({ userId }) => {
         let UserId = localStorage.getItem('UserId')
 
         const baseUrl = import.meta.env.VITE_API_BASE_URL
-        // let url = `${baseUrl}chatbot-conversation?UserId=${UserId}&SessionId=0`
 
-        // let response = await axios.get(url, {
-        //   headers: {
-        //     'x-api-key': import.meta.env.VITE_API_ACCESS_KEY
-        //   }
-        // })
         let url = `${baseUrl}chatbot_all_user_conversations?UserId=${UserId}`
 
         let response = await axios.get(url, {
@@ -30,7 +24,6 @@ const Chat = ({ userId }) => {
         })
 
         setallUserConversations(response.data.body)
-        setchatMessages(response.data.body[0])
 
         console.log(chatMessages)
       } catch (error) {
@@ -47,6 +40,8 @@ const Chat = ({ userId }) => {
           <ConversationsHistorySidePanel
             setnewConversation={setnewConversation}
             allUserConversations={allUserConversations}
+            setallUserConversations={setallUserConversations}
+            chatMessages={chatMessages}
             setchatMessages={setchatMessages}
             newConversation={newConversation}
           />

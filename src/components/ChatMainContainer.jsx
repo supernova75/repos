@@ -23,16 +23,16 @@ const ChatMainContainer = ({
   useEffect(() => {
     if (newConversation) {
       // Reset chat messages for new conversation
-      setchatMessages({ History: ['hi'] })
+      setchatMessages({ History: [''] })
     }
   }, [newConversation])
 
   useEffect(() => {
+    console.log(chatMessages)
     scrollToBottom()
-    console.log('changed')
   }, [chatMessages])
   return (
-    <div className=" relative flex flex-col h-full w-full">
+    <div className=" flex-grow relative flex flex-col h-full w-full">
       <div className="flex flex-row h-full w-full">
         <div className="flex flex-col flex-auto h-5/6 p-6">
           <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-medium-grey h-full p-4  ">
@@ -64,9 +64,10 @@ const ChatMainContainer = ({
                   </div>
                 )
               ) : (
-                'hi'
+                'error'
               )}
             </div>
+
             <ChatInputBox
               setchatMessages={setchatMessages}
               chatMessages={chatMessages}
