@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -18,11 +19,13 @@ export default {
       'seconday-7687c': '#154388',
       'seconday-1255c': '#FDC646',
       'seconday-284c': '#6AA9DD',
-      'light-grey': '#f8fafc'
-    },
-    fontFamily: {
-      bukra: ['Bukra', 'sans-serif']
+      'dark-blue': '#302D54',
+      'light-grey': '#f8fafc',
+      'medium-grey': '#EFEFEF',
+      'light-yellow': '#FFF06E',
+      white: '#FFFFFF',
+      'light-red': '#FF4C57'
     }
   },
-  plugins: []
+  plugins: [require('tailwind-scrollbar')]
 }
