@@ -45,15 +45,15 @@ const ConversationHistorySidePanelChat = ({
     }
     console.log(SessionId)
   }
-  const deleteChat = () => {
-    console.log('delete')
-  }
+
   const toast = useRef(null)
 
   const accept = () => {
     if (conversation['SessionId'] === chatMessages['SessionId']) {
       setnewConversation(true)
     }
+    
+    // add api call for delete here
 
     setallUserConversations((previous) =>
       previous.filter(
